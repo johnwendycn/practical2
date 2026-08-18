@@ -1,0 +1,1056 @@
+================================================================================
+PROMPT 1.1: WORKSHOP KICKOFF
+================================================================================
+
+"Welcome to 'Structuring Unstructured Data with Copilot.'
+
+Today you will learn how to:
+1. Use Copilot to extract topics from customer comments
+2. Use Copilot to identify aspects within each topic
+3. Perform aspect-based sentiment analysis
+4. Analyze sentiment findings for each aspect
+5. Conduct trend analysis with Copilot
+6. Apply Responsible AI principles throughout
+
+Let's begin!"
+
+================================================================================
+PROMPT 1.2: DATA PREPARATION
+================================================================================
+
+"Open Excel with Copilot enabled.
+
+1. Create a new workbook
+2. Name the first sheet 'Raw_Data'
+3. Copy these column headers into Row 1:
+   - id
+   - date
+   - bank_name
+   - customer_comment
+   - region
+
+4. Paste the 400 records starting from Row 2
+
+5. Save the file as 'Customer_Feedback_Analysis.xlsx'
+
+READY? Type 'YES' when you have completed these steps."
+
+================================================================================
+
+
+
+
+================================================================================
+PROMPT 2.1: INTRODUCING TOPIC MODELING
+================================================================================
+
+"Topic modeling is the process of identifying the main subject or theme of each customer comment.
+
+Let's use Copilot to discover the topics in our data.
+
+Your task is to let Copilot analyze the customer comments and automatically identify the main topics being discussed.
+
+We want Copilot to:
+1. Read all customer comments
+2. Identify patterns and themes
+3. Group similar comments together
+4. Assign topic labels to each row
+
+Let's begin by asking Copilot to discover the topics."
+
+================================================================================
+PROMPT 2.2: COPILOT PROMPT FOR TOPIC DISCOVERY
+================================================================================
+
+"Copy this EXACT prompt and paste it into Copilot:
+
+'I need to analyze customer comments about banks in Nigeria.
+
+For each row in the customer_comment column, I want you to:
+
+1. Read and understand the comment
+2. Identify the main topic or theme being discussed
+3. Create a new column called "topic"
+
+Analyze all comments together to identify common themes.
+
+For each comment, assign a descriptive topic name that captures the main subject. Be specific and consistent. If a comment mentions multiple things, identify the PRIMARY topic.
+
+Consider the context of Nigerian banking, customer experiences, and common themes in financial services.
+
+Process all rows in the dataset.'
+
+WAIT for Copilot to complete the analysis. This may take 1-2 minutes."
+
+================================================================================
+PROMPT 2.3: COPILOT PROMPT FOR TOPIC DISTRIBUTION ANALYSIS
+================================================================================
+
+"Copy this EXACT prompt and paste it into Copilot:
+
+'Now that you have assigned topics to all comments, please provide a summary analysis of the topic distribution.
+
+Specifically:
+
+1. Calculate the count of comments for each unique topic
+2. Calculate the percentage distribution for each topic
+3. Sort the topics from most frequent to least frequent
+4. Identify which topic has the highest number of comments
+5. Identify which topic has the lowest number of comments
+
+Present this information in a clear table format with:
+- Topic name
+- Number of comments
+- Percentage of total comments
+
+Also, create a brief summary explaining what this distribution tells us about customer feedback patterns in Nigerian banking.'
+
+WAIT for Copilot to complete the analysis."
+
+================================================================================
+PROMPT 2.4: COPILOT PROMPT FOR TOPIC REFINEMENT
+================================================================================
+
+"Copy this prompt into Copilot:
+
+'Review the topic assignments you just made. Look for opportunities to improve consistency and accuracy.
+
+For each topic you identified, ask yourself:
+1. Is this topic clearly defined?
+2. Are there similar topics that could be merged?
+3. Are there topics that should be split?
+4. Are there any misclassifications?
+
+If you find topics that are too similar, merge them. If a topic is too broad, split it into more specific categories.
+
+Provide a summary of the topics you identified:
+- List of topics
+- Number of comments in each topic
+- Examples of comments for each topic
+- Any refinements you recommend
+
+Apply these refinements and update the topic column accordingly.
+
+After refinement, provide an updated topic distribution summary.'
+
+REVIEW: Are the refined topics more consistent?
+
+TRANSPARENCY CHECK: Can you see WHY Copilot assigned each topic?"
+
+================================================================================
+PROMPT 2.5: COPILOT PROMPT FOR TOPIC VALIDATION
+================================================================================
+
+"Copy this prompt into Copilot:
+
+'Please validate the topic assignments by performing the following checks:
+
+1. RANDOM SAMPLING CHECK
+   - Select 10 random comments
+   - For each, explain why the assigned topic is appropriate
+   - If any seem incorrect, suggest the correct topic
+
+2. CONSISTENCY CHECK
+   - Look for comments that are similar in content
+   - Verify that similar comments received similar topic assignments
+   - Note any inconsistencies
+
+3. COVERAGE CHECK
+   - Are there any comments that don't fit well into any topic?
+   - Are there topics that seem too broad or too narrow?
+
+4. NIGERIAN BANKING CONTEXT CHECK
+   - Are topics relevant to Nigerian banking?
+   - Are there any topics specific to Nigerian banking that might be missing?
+
+Provide a validation report with your findings and any recommended corrections.'
+
+WAIT for Copilot to complete the validation.
+
+HUMAN INSIGHT: What did Copilot get right? What could be improved?"
+
+================================================================================
+
+
+
+
+================================================================================
+PROMPT 3.1: INTRODUCING ASPECT EXTRACTION
+================================================================================
+
+"Now we go deeper than topics. ASPECT extraction identifies the SPECIFIC element being discussed within each topic.
+
+While a topic tells us WHAT the comment is about, an aspect tells us WHICH PART of that topic is being discussed.
+
+Let's use Copilot to discover and extract aspects for each comment."
+
+================================================================================
+PROMPT 3.2: COPILOT PROMPT FOR ASPECT DISCOVERY
+================================================================================
+
+"Copy this EXACT prompt and paste it into Copilot:
+
+'Now that we have topics for each comment, I want you to go deeper and identify the SPECIFIC aspect being discussed.
+
+Add a new column called "aspect". For each row, analyze the customer_comment and identify the specific element, feature, or sub-topic being discussed.
+
+Guidelines:
+1. Aspects should be specific and descriptive
+2. Use consistent naming for similar aspects
+3. The aspect should relate to the topic you already assigned
+
+Don't just repeat the topic. Go deeper. Find the specific thing being discussed.
+
+For each comment, read carefully and extract the one most specific aspect.
+
+Process all rows.'
+
+WAIT for Copilot to complete the analysis."
+
+================================================================================
+PROMPT 3.3: COPILOT PROMPT FOR ASPECT DISTRIBUTION ANALYSIS
+================================================================================
+
+"Copy this EXACT prompt and paste it into Copilot:
+
+'Now that you have extracted aspects for all comments, please provide a summary analysis of the aspect distribution.
+
+Specifically:
+
+1. Calculate the count of comments for each unique aspect
+2. Calculate the percentage distribution for each aspect
+3. Sort the aspects from most frequent to least frequent
+4. Show how aspects relate to topics (which aspects appear in which topics)
+5. Identify the top 10 most common aspects
+6. Identify which aspect has the highest number of comments
+7. Identify which aspect has the lowest number of comments
+
+Present this information in clear table formats with:
+- Aspect name
+- Associated topic
+- Number of comments
+- Percentage of total comments
+
+Also, provide a brief analysis of what this aspect distribution tells us about specific customer concerns in Nigerian banking.'
+
+WAIT for Copilot to complete the analysis."
+
+================================================================================
+PROMPT 3.4: COPILOT PROMPT FOR ASPECT REFINEMENT
+================================================================================
+
+"Copy this prompt into Copilot:
+
+'Review the aspect assignments you just made. Look for opportunities to improve.
+
+For each aspect, check:
+1. Is the aspect SPECIFIC enough?
+2. Is the naming CONSISTENT across similar comments?
+3. Does the aspect properly RELATE to the topic?
+4. Could the aspect be more DESCRIPTIVE?
+
+If you find aspects that are:
+- Too general → Make them more specific
+- Inconsistent → Standardize the naming
+- Wrong → Reassign to the correct aspect
+- Missing → Add the appropriate aspect
+
+Provide a summary of the aspects you identified and any refinements you made.
+
+Apply these refinements and update the aspect column accordingly.
+
+After refinement, provide an updated aspect distribution summary.'
+
+REVIEW: Are the refined aspects better?
+
+HUMAN INSIGHT: What aspects did Copilot miss? Add your own insights."
+
+================================================================================
+PROMPT 3.5: COPILOT PROMPT FOR TOPIC-ASPECT RELATIONSHIP ANALYSIS
+================================================================================
+
+"Copy this prompt into Copilot:
+
+'Please analyze the relationship between topics and aspects.
+
+Specifically:
+
+1. For each topic, list all the aspects that appear under it
+2. Calculate how many comments each aspect has within each topic
+3. Identify which topics have the most diverse aspects (many different aspects)
+4. Identify which topics have the most focused aspects (few aspects, highly concentrated)
+5. Identify aspects that appear across multiple topics
+6. Identify aspects that are unique to specific topics
+
+Present this as a matrix or table showing:
+| Topic | Aspect | Count | Percentage of Topic |
+
+Also provide a brief analysis explaining what these relationships tell us about customer feedback patterns.
+
+For example:
+- Topics with many aspects might indicate complex customer experiences
+- Topics with few aspects might indicate specific, focused concerns
+- Aspects that appear across multiple topics might indicate cross-cutting issues'
+
+WAIT for Copilot to complete the analysis."
+
+================================================================================
+
+
+================================================================================
+PROMPT 4.1: INTRODUCING ASPECT-BASED SENTIMENT ANALYSIS
+================================================================================
+
+"Now we're going to perform ASPECT-BASED SENTIMENT ANALYSIS.
+
+This is different from general sentiment analysis because:
+- General sentiment: 'This is a negative comment'
+- Aspect-based sentiment: 'The app speed is positive, but the customer service is negative'
+
+Aspect-based sentiment analysis tells us:
+- Which aspects customers are happy about
+- Which aspects need improvement
+- What drives positive and negative experiences
+
+We'll analyze sentiment for EACH aspect separately."
+
+================================================================================
+PROMPT 4.2: COPILOT PROMPT FOR ASPECT-BASED SENTIMENT ANALYSIS
+================================================================================
+
+"Copy this EXACT prompt and paste it into Copilot:
+
+'Now I want you to perform ASPECT-BASED SENTIMENT ANALYSIS.
+
+For EACH aspect that you identified, analyze the sentiment of comments that mention that aspect.
+
+Add THREE new columns:
+1. aspect_sentiment_score - Sentiment score specifically for the aspect (from -1.0 to +1.0)
+2. aspect_sentiment_category - Positive, Negative, or Neutral for the aspect
+3. aspect_sentiment_explanation - Brief explanation of why this aspect received this sentiment
+
+IMPORTANT: The sentiment should be SPECIFIC to the aspect, not the overall comment.
+
+For example:
+- Comment: 'The app is fast but customer service is slow'
+  - Overall sentiment might be neutral
+  - Aspect 'App Speed' → Positive
+  - Aspect 'Customer Service' → Negative
+
+For each aspect, identify:
+- What words or phrases relate to that aspect
+- Whether those words are positive or negative
+- How strongly positive or negative they are
+
+Process all rows. Focus on the aspect you identified for each comment.
+
+Use this sentiment scoring scale:
+- +1.0 to +0.6: Positive
+- +0.5 to +0.1: Slightly Positive
+- 0.0 to -0.1: Neutral
+- -0.2 to -0.6: Slightly Negative
+- -0.7 to -1.0: Negative
+
+Consider Nigerian banking context and cultural nuances in your sentiment analysis.'
+
+WAIT for Copilot to complete the analysis."
+
+================================================================================
+PROMPT 4.3: COPILOT PROMPT FOR ASPECT SENTIMENT SUMMARY ANALYSIS
+================================================================================
+
+"Copy this EXACT prompt and paste it into Copilot:
+
+'Now that you have assigned aspect sentiment scores to all comments, please provide a comprehensive sentiment summary analysis.
+
+Specifically:
+
+1. SENTIMENT BY ASPECT
+   - For each aspect, calculate the average sentiment score
+   - Sort aspects from highest to lowest average sentiment
+   - Categorize each aspect as Positive, Negative, or Neutral based on the average score
+
+2. SENTIMENT DISTRIBUTION
+   - Count how many aspects fall into each sentiment category (Positive, Negative, Neutral)
+   - Calculate the percentage distribution
+
+3. TOP PERFORMING ASPECTS
+   - List the top 5 aspects with the highest average sentiment scores
+   - For each, provide the average score and an explanation of what this aspect covers
+
+4. BOTTOM PERFORMING ASPECTS
+   - List the top 5 aspects with the lowest average sentiment scores
+   - For each, provide the average score and an explanation of what this aspect covers
+
+5. ASPECT SENTIMENT VARIABILITY
+   - Identify aspects with the highest variation in sentiment scores (most controversial)
+   - Identify aspects with the lowest variation in sentiment scores (most consistent)
+
+Present this information in clear tables and provide a brief narrative analysis explaining the findings.
+
+For example:
+- What do the top performing aspects tell us about what banks are doing well?
+- What do the bottom performing aspects tell us about what needs improvement?
+- What do controversial aspects indicate about customer expectations?'
+
+WAIT for Copilot to complete the analysis."
+
+================================================================================
+PROMPT 4.4: COPILOT PROMPT FOR ASPECT SENTIMENT REFINEMENT
+================================================================================
+
+"Copy this prompt into Copilot:
+
+'Review the aspect-based sentiment scores. Look for any that might need correction.
+
+Check for:
+1. Aspects that got the wrong sentiment
+2. Aspects where sentiment doesn't match the comment
+3. Mixed sentiment within the same aspect
+4. Cultural expressions that might be misinterpreted
+
+For each issue found, provide:
+- The aspect
+- The current score
+- The correct score
+- Explanation for the correction
+
+Apply these corrections and update the aspect sentiment columns.
+
+Consider Nigerian banking context and cultural nuances.
+
+After refinement, provide an updated sentiment summary analysis.'
+
+REVIEW: Are the refined scores more accurate?
+
+HUMAN INSIGHT: What nuances did Copilot miss in aspect sentiment?"
+
+================================================================================
+PROMPT 4.5: COPILOT PROMPT FOR SENTIMENT PATTERN DISCOVERY
+================================================================================
+
+"Copy this prompt into Copilot:
+
+'Please analyze patterns in aspect-based sentiment across different dimensions.
+
+Specifically:
+
+1. SENTIMENT BY TOPIC
+   - For each topic, calculate the average aspect sentiment score
+   - Identify which topics have the highest and lowest average sentiment
+   - Identify which topics have the most and least consistent sentiment
+
+2. SENTIMENT BY BANK
+   - For each bank, calculate the average aspect sentiment score
+   - Identify which banks have the highest and lowest average sentiment
+   - Identify which banks have the most and least consistent sentiment
+   - Show the top 3 and bottom 3 banks by average sentiment
+
+3. SENTIMENT BY REGION
+   - For each region, calculate the average aspect sentiment score
+   - Identify which regions have the highest and lowest average sentiment
+   - Identify which regions have the most and least consistent sentiment
+
+4. SENTIMENT BY ASPECT WITHIN TOPICS
+   - For each topic, identify:
+     - The aspect with the highest sentiment score
+     - The aspect with the lowest sentiment score
+     - The aspect with the most variation
+
+5. SENTIMENT BY ASPECT WITHIN BANKS
+   - For each bank, identify:
+     - The aspect with the highest sentiment score
+     - The aspect with the lowest sentiment score
+     - The aspect with the most variation
+
+6. SENTIMENT BY ASPECT WITHIN REGIONS
+   - For each region, identify:
+     - The aspect with the highest sentiment score
+     - The aspect with the lowest sentiment score
+     - The aspect with the most variation
+
+Present findings in clear tables and provide a narrative analysis explaining the patterns.
+
+For example:
+- Are certain topics consistently positive across banks?
+- Are certain banks performing better on specific aspects?
+- Are there regional differences in aspect sentiment?'
+
+WAIT for Copilot to complete the analysis."
+
+================================================================================
+PROMPT 4.6: COPILOT PROMPT FOR ASPECT SENTIMENT VISUALIZATION
+================================================================================
+
+"Copy this prompt into Copilot:
+
+'Please provide instructions for creating visualizations of the aspect sentiment findings.
+
+For each visualization, specify:
+1. Chart type
+2. What data to use
+3. How to set it up in Excel
+4. What it shows
+5. What to look for
+
+VISUALIZATION 1: Aspect Sentiment Ranking
+- Chart: Horizontal Bar Chart
+- Data: aspect (rows), average aspect_sentiment_score (values)
+- Setup: Sort from highest to lowest
+- Shows: Which aspects have highest/lowest sentiment
+
+VISUALIZATION 2: Aspect Sentiment Distribution
+- Chart: Histogram
+- Data: aspect_sentiment_score column
+- Setup: Bin width 0.2
+- Shows: How aspect sentiment scores are distributed
+
+VISUALIZATION 3: Sentiment by Topic
+- Chart: Bar Chart (Grouped by Topic)
+- Data: topic (x-axis), aspect (series), average aspect_sentiment_score (values)
+- Setup: Each topic shows its aspects
+- Shows: Aspect sentiment within each topic
+
+VISUALIZATION 4: Sentiment by Bank
+- Chart: Heatmap (Conditional Formatting in Excel)
+- Data: bank_name (rows), aspect (columns), average aspect_sentiment_score (values)
+- Setup: Apply color scale (Red=Negative, Yellow=Neutral, Green=Positive)
+- Shows: Bank performance on each aspect
+
+VISUALIZATION 5: Sentiment by Region
+- Chart: Bar Chart
+- Data: region (x-axis), average aspect_sentiment_score (values)
+- Setup: Sort from highest to lowest
+- Shows: Regional sentiment differences
+
+VISUALIZATION 6: Top Positive vs Top Negative Aspects
+- Chart: Side-by-Side Bar Chart
+- Data: Top 5 positive aspects (left), Top 5 negative aspects (right)
+- Setup: Green for positive, Red for negative
+- Shows: Best and worst performing aspects
+
+Provide step-by-step instructions for creating each visualization in Excel.
+
+After creating these visualizations, what insights do they reveal?'
+
+WAIT for Copilot to provide the visualization instructions."
+
+================================================================================
+
+
+================================================================================
+PROMPT 5.1: INTRODUCING ASPECT TREND ANALYSIS
+================================================================================
+
+"Now we'll analyze how sentiment for EACH aspect changes over time.
+
+Aspect trend analysis helps us understand:
+- Which aspects are improving or declining
+- Where to focus improvement efforts
+- What aspects are becoming more or less important
+
+We'll use Copilot to discover aspect trends."
+
+================================================================================
+PROMPT 5.2: COPILOT PROMPT FOR ASPECT TREND DISCOVERY
+================================================================================
+
+"Copy this EXACT prompt and paste it into Copilot:
+
+'Now I want you to analyze trends for EACH aspect over time.
+
+Add TWO new columns:
+1. aspect_trend_period - The quarter and year based on the date column
+2. aspect_trend_direction - Whether aspect sentiment is going Upward, Downward, or Stable
+
+For aspect_trend_period:
+- Use the date column to determine the quarter
+- Format as Q1 2025, Q2 2025, Q3 2025, Q4 2025, Q1 2026
+
+For aspect_trend_direction:
+1. Group the data by aspect and quarter
+2. Calculate the average aspect sentiment for each group
+3. Compare each quarter to the previous quarter
+   - If aspect sentiment INCREASED → Upward
+   - If aspect sentiment DECREASED → Downward
+   - If aspect sentiment stayed the same → Stable
+
+Consider any seasonal factors or events that might affect trends.
+
+Process all rows and add these two columns.'
+
+WAIT for Copilot to complete the analysis."
+
+================================================================================
+PROMPT 5.3: COPILOT PROMPT FOR ASPECT TREND SUMMARY
+================================================================================
+
+"Copy this EXACT prompt and paste it into Copilot:
+
+'Now that you have identified trends for each aspect, please provide a comprehensive trend summary analysis.
+
+Specifically:
+
+1. OVERALL TREND DISTRIBUTION
+   - Count how many aspects are trending Upward, Downward, or Stable
+   - Calculate the percentage distribution
+
+2. IMPROVING ASPECTS
+   - List all aspects with an Upward trend
+   - For each, provide the trend direction and a brief explanation
+   - Identify the top 3 aspects showing the most improvement
+
+3. DECLINING ASPECTS
+   - List all aspects with a Downward trend
+   - For each, provide the trend direction and a brief explanation
+   - Identify the top 3 aspects showing the most decline
+
+4. TREND BY TOPIC
+   - For each topic, show the trend distribution
+   - Identify which topics are improving overall vs declining
+
+5. TREND BY BANK
+   - For each bank, show the trend distribution
+   - Identify which banks are improving overall vs declining
+
+6. SEASONAL PATTERNS
+   - Identify any seasonal patterns in aspect sentiment
+   - For example, do certain aspects show quarterly patterns?
+
+7. EMERGING CONCERNS
+   - Identify aspects that are declining but have high importance
+   - These should be considered priority areas
+
+Present this information in clear tables and provide a narrative analysis.
+
+Also, provide a summary of the most important trend insights for Nigerian banking.'
+
+WAIT for Copilot to complete the analysis."
+
+================================================================================
+PROMPT 5.4: COPILOT PROMPT FOR TREND VALIDATION
+================================================================================
+
+"Copy this prompt into Copilot:
+
+'Review the aspect trend analysis. Verify that aspect_trend_direction accurately reflects sentiment changes over time.
+
+For EACH major aspect (top 10 most common aspects), provide:
+1. Average aspect sentiment by quarter (create a table)
+2. Quarter-over-quarter change (as a percentage)
+3. Overall trend direction
+4. A brief explanation of what the trend shows
+
+Example format:
+| Aspect | Q1 2025 | Q2 2025 | Q3 2025 | Q4 2025 | Q1 2026 | QoQ Change | Trend |
+|--------|---------|---------|---------|---------|---------|------------|-------|
+| Aspect A | 0.65 | 0.72 | 0.80 | 0.75 | 0.78 | +20% | Upward |
+
+After reviewing, identify:
+1. Any trends that might be misleading
+2. Any aspects with inconsistent patterns
+3. Any external factors that might explain trends (e.g., regulatory changes, market events)
+4. Any aspects where the trend direction is particularly strong or weak
+
+Apply Nigerian banking context. Consider real-world events that might affect aspect sentiment.
+
+Provide a validation report with your findings.'
+
+REVIEW: Are the aspect trends accurate?
+
+ACCOUNTABILITY: Can you justify each aspect trend direction?"
+
+================================================================================
+PROMPT 5.5: COPILOT PROMPT FOR TREND VISUALIZATION
+================================================================================
+
+"Copy this prompt into Copilot:
+
+'Please provide instructions for creating visualizations of the aspect trends.
+
+For each visualization, specify:
+1. Chart type
+2. What data to use
+3. How to set it up in Excel
+4. What it shows
+5. What to look for
+
+VISUALIZATION 1: Aspect Trend Overview
+- Chart: Line Chart (Multiple Lines)
+- Data: aspect_trend_period (x-axis), average aspect_sentiment_score (y-axis), aspect (series)
+- Setup: One line per major aspect
+- Shows: How each aspect's sentiment has changed over time
+
+VISUALIZATION 2: Overall Sentiment Trend
+- Chart: Line Chart
+- Data: aspect_trend_period (x-axis), overall average sentiment (y-axis)
+- Setup: Single line showing overall trend
+- Shows: Overall sentiment trend across all aspects
+
+VISUALIZATION 3: Top Improving Aspects
+- Chart: Line Chart
+- Data: aspect_trend_period (x-axis), average aspect_sentiment_score (y-axis)
+- Setup: Only include aspects with Upward trend
+- Shows: Which aspects are improving and by how much
+
+VISUALIZATION 4: Top Declining Aspects
+- Chart: Line Chart
+- Data: aspect_trend_period (x-axis), average aspect_sentiment_score (y-axis)
+- Setup: Only include aspects with Downward trend
+- Shows: Which aspects are declining and by how much
+
+VISUALIZATION 5: Trend Direction Summary
+- Chart: Bar Chart
+- Data: aspect, trend_direction
+- Setup: Color code (Green=Upward, Yellow=Stable, Red=Downward)
+- Shows: Overview of trend directions
+
+VISUALIZATION 6: Trend Heatmap
+- Chart: Conditional Formatting Matrix
+- Data: aspect (rows), trend_period (columns), average aspect_sentiment_score (values)
+- Setup: Color scale (Red=Negative, Yellow=Neutral, Green=Positive)
+- Shows: Visual representation of sentiment changes over time
+
+VISUALIZATION 7: Bank Trend Comparison
+- Chart: Line Chart (Multiple Lines)
+- Data: aspect_trend_period (x-axis), average aspect_sentiment_score (y-axis), bank_name (series)
+- Setup: One line per bank
+- Shows: How each bank's overall sentiment has changed over time
+
+Provide step-by-step instructions for creating each visualization in Excel.
+
+After creating these visualizations, what do they reveal about trends in Nigerian banking?'
+
+WAIT for Copilot to provide the visualization instructions."
+
+================================================================================
+
+
+
+
+
+================================================================================
+PROMPT 6.1: COPILOT PROMPT FOR ASPECT PERFORMANCE SCORECARD
+================================================================================
+
+"Copy this prompt into Copilot:
+
+'Create a comprehensive aspect performance scorecard that combines all analysis dimensions.
+
+For EACH aspect, provide:
+
+| Aspect | Topic | Avg Score | Trend | Sentiment Category | Key Driver | Action Priority |
+|--------|-------|-----------|-------|-------------------|------------|-----------------|
+| ________ | ________ | ________ | ________ | ________ | ________ | ________ |
+
+For the "Key Driver" column, identify what is primarily driving this aspect's sentiment (e.g., "App speed", "Staff training", "Interest rates", "Response time").
+
+For the "Action Priority" column, categorize as:
+- High Priority: Negative sentiment + Declining trend
+- Medium Priority: Negative sentiment + Stable trend OR Neutral sentiment + Declining trend
+- Low Priority: Positive sentiment + Improving trend
+- Monitor: Positive sentiment + Stable trend
+
+Also provide:
+
+1. HIGH PRIORITY ASPECTS
+   - List all aspects with High Priority
+   - For each, recommend specific actions to address the issue
+
+2. MEDIUM PRIORITY ASPECTS
+   - List all aspects with Medium Priority
+   - For each, recommend actions to prevent deterioration
+
+3. LOW PRIORITY ASPECTS
+   - List all aspects with Low Priority
+   - For each, recommend actions to maintain or enhance performance
+
+4. BEST PRACTICE ASPECTS
+   - List aspects with the highest scores and/or strong upward trends
+   - Identify what banks are doing well in these areas
+
+5. CROSS-CUTTING INSIGHTS
+   - Identify patterns across aspects
+   - Identify systemic issues
+   - Identify strengths to build upon
+
+Present a detailed scorecard with recommendations.'
+
+WAIT for Copilot to complete the analysis."
+
+================================================================================
+PROMPT 6.2: COPILOT PROMPT FOR ASPECT BENCHMARKING BY BANK
+================================================================================
+
+"Copy this prompt into Copilot:
+
+'Please analyze how banks perform on different aspects.
+
+Specifically:
+
+1. BANK PERFORMANCE SCORECARD
+   For each bank, provide:
+   - Overall average aspect sentiment score
+   - Top 3 performing aspects
+   - Bottom 3 performing aspects
+   - Number of aspects where they are above average
+   - Number of aspects where they are below average
+
+2. BANK-BY-ASPECT ANALYSIS
+   For each bank, show:
+   - Which aspects they excel at (score ≥ 0.5)
+   - Which aspects they are average at (score between -0.5 and 0.5)
+   - Which aspects they need improvement on (score ≤ -0.5)
+
+3. BANK COMPETITIVE POSITIONING
+   - Which banks are leaders in specific aspects?
+   - Which banks are lagging in specific aspects?
+   - Which banks have the most consistent performance?
+   - Which banks have the most variable performance?
+
+4. BEST PRACTICE IDENTIFICATION
+   - For each aspect, identify the top 3 performing banks
+   - Provide insights on what these banks might be doing differently
+
+5. GAP ANALYSIS
+   - For each aspect, calculate the gap between the best and worst performing bank
+   - Identify aspects with the largest gaps (opportunities for improvement)
+   - Identify aspects with the smallest gaps (industry standard)
+
+Present findings in clear tables and provide a narrative analysis.
+
+Also, identify any banks that consistently outperform or underperform across multiple aspects.'
+
+WAIT for Copilot to complete the analysis."
+
+================================================================================
+PROMPT 6.3: COPILOT PROMPT FOR ASPECT BENCHMARKING BY REGION
+================================================================================
+
+"Copy this prompt into Copilot:
+
+'Please analyze how regions perform on different aspects.
+
+Specifically:
+
+1. REGIONAL PERFORMANCE SCORECARD
+   For each region, provide:
+   - Overall average aspect sentiment score
+   - Top 3 performing aspects
+   - Bottom 3 performing aspects
+   - Number of aspects where they are above average
+   - Number of aspects where they are below average
+
+2. REGIONAL-BY-ASPECT ANALYSIS
+   For each region, show:
+   - Which aspects they excel at (score ≥ 0.5)
+   - Which aspects they are average at (score between -0.5 and 0.5)
+   - Which aspects they need improvement on (score ≤ -0.5)
+
+3. REGIONAL COMPARISON
+   - Which regions are leaders in specific aspects?
+   - Which regions are lagging in specific aspects?
+   - Which regions have the most consistent performance?
+   - Which regions have the most variable performance?
+
+4. REGIONAL BEST PRACTICE IDENTIFICATION
+   - For each aspect, identify the top 3 performing regions
+   - Provide insights on what these regions might be doing differently
+
+5. REGIONAL GAP ANALYSIS
+   - For each aspect, calculate the gap between the best and worst performing region
+   - Identify aspects with the largest gaps
+   - Identify aspects with the smallest gaps
+
+6. REGIONAL INSIGHTS
+   - Are there regional patterns in banking satisfaction?
+   - What factors might explain regional differences?
+   - What recommendations would you make for each region?
+
+Present findings in clear tables and provide a narrative analysis.
+
+Also, identify any regions that consistently outperform or underperform across multiple aspects.
+
+Consider: Lagos vs Abuja vs Kano vs Ibadan vs Port Harcourt differences.'
+
+WAIT for Copilot to complete the analysis."
+
+================================================================================
+PROMPT 6.4: COPILOT PROMPT FOR ASPECT RELATIONSHIP ANALYSIS
+================================================================================
+
+"Copy this prompt into Copilot:
+
+'Please analyze the relationships between different aspects.
+
+Specifically:
+
+1. ASPECT CORRELATION ANALYSIS
+   - Calculate correlations between aspect sentiment scores
+   - Identify aspects that are positively correlated
+   - Identify aspects that are negatively correlated
+   - Identify aspects that are not correlated
+
+2. ASPECT CLUSTERING
+   - Group aspects that tend to move together
+   - Identify clusters of related aspects
+   - For each cluster, provide a descriptive name
+
+3. ASPECT IMPACT ANALYSIS
+   - Identify which aspects have the strongest correlation with overall satisfaction
+   - Identify which aspects are the strongest drivers of positive sentiment
+   - Identify which aspects are the strongest drivers of negative sentiment
+
+4. ASPECT SEQUENCE ANALYSIS
+   - Identify aspects that tend to appear together in comments
+   - Identify which aspects are mentioned first vs later in comments
+
+5. ASPECT GATEWAY ANALYSIS
+   - Are there aspects that, when improved, lead to improvement in other aspects?
+   - Are there aspects that, when declined, lead to decline in other aspects?
+
+6. ASPECT PRIORITIZATION MATRIX
+   - Create a 2x2 matrix:
+     - X-axis: Impact on overall satisfaction (High/Low)
+     - Y-axis: Current sentiment (Positive/Negative)
+   - Place each aspect in the appropriate quadrant
+   - Provide recommendations for each quadrant
+
+Present findings in clear tables and provide a narrative analysis.
+
+For example:
+- Highly Positive + High Impact → Leverage as strength
+- Highly Negative + High Impact → Immediate priority
+- Highly Positive + Low Impact → Maintain, low priority
+- Highly Negative + Low Impact → Address, but lower priority'
+
+WAIT for Copilot to complete the analysis."
+
+================================================================================
+
+
+
+
+
+
+
+
+
+
+
+================================================================================
+PROMPT 7.1: COPILOT PROMPT FOR ASPECT QUERY EXAMPLES
+================================================================================
+
+"Copy this prompt into Copilot:
+
+'Provide useful queries to analyze aspect-based sentiment in this dataset.
+
+For each query, include:
+1. WHAT you want to know about aspects
+2. HOW to get it (Excel steps with formula or PivotTable instructions)
+3. WHAT the result means
+4. HOW to interpret it
+
+QUERY TYPES FOR ASPECT ANALYSIS:
+
+1. Understanding Aspect Performance
+   - Which aspects have the highest sentiment?
+   - Which aspects have the lowest sentiment?
+   - Which aspects are improving or declining?
+
+2. Understanding Aspect Drivers
+   - What drives positive aspect sentiment?
+   - What drives negative aspect sentiment?
+   - Which aspects most influence overall satisfaction?
+
+3. Understanding Aspect Relationships
+   - How do aspects relate to each other?
+   - Which aspects co-occur in comments?
+   - Which aspects are mutually exclusive?
+
+4. Understanding Aspect Trends
+   - Which aspects are trending upward?
+   - Which aspects are trending downward?
+   - Are there seasonal patterns in aspect sentiment?
+
+5. Understanding Aspect Impact
+   - Which aspects matter most to customers?
+   - Which aspects are 'deal breakers'?
+   - Which aspects create 'delighters'?
+
+Example Query Format:
+QUERY: "Which aspects have the highest and lowest sentiment?"
+- Excel Steps:
+  1. Create a PivotTable with 'aspect' as Rows
+  2. Add 'aspect_sentiment_score' as Values (Average)
+  3. Sort by Average score descending
+- Interpretation: Higher scores indicate aspects customers are more satisfied with
+
+Generate 10 practical queries that help discover actionable insights from aspect sentiment data.
+
+Present each query with clear step-by-step Excel instructions.'
+
+WAIT for Copilot to generate the queries."
+
+================================================================================
+PROMPT 7.2: COPILOT PROMPT FOR ASPECT INSIGHT DISCOVERY
+================================================================================
+
+"Copy this prompt into Copilot:
+
+'Based on the aspect-based sentiment analysis, generate key insights for Nigerian banking.
+
+Specifically:
+
+1. ASPECT PERFORMANCE SUMMARY
+   - What is the overall sentiment across all aspects?
+   - What are the best performing aspects?
+   - What are the worst performing aspects?
+   - What aspects are showing the most improvement?
+   - What aspects are showing the most decline?
+
+2. DRIVERS OF POSITIVE ASPECT SENTIMENT
+   - What aspects make customers most happy?
+   - What topics contain the most positive aspects?
+   - Which banks excel in positive aspects?
+   - What can other banks learn from high performers?
+
+3. DRIVERS OF NEGATIVE ASPECT SENTIMENT
+   - What aspects make customers most unhappy?
+   - What topics contain the most negative aspects?
+   - Which banks struggle with negative aspects?
+   - What can struggling banks learn from leaders?
+
+4. ASPECT TREND INSIGHTS
+   - What aspects are improving fastest?
+   - What aspects are declining fastest?
+   - What might be causing these trends?
+   - Are there industry-wide trends vs bank-specific trends?
+
+5. ASPECT ACTION RECOMMENDATIONS
+   - What aspects need immediate improvement?
+   - What aspects should be maintained?
+   - What aspects should be leveraged as strengths?
+   - What aspects should be monitored for future risk?
+
+6. STRATEGIC INSIGHTS
+   - What does this tell us about Nigerian banking customer priorities?
+   - What are the systemic issues across the industry?
+   - What are the opportunities for competitive advantage?
+   - What should regulators focus on?
+
+7. CUSTOMER SEGMENT INSIGHTS
+   - How do different regions experience banking aspects?
+   - Are there aspects that matter more to specific regions?
+
+Provide specific, actionable recommendations based on the aspect findings.
+
+Apply Nigerian banking context throughout.'
+
+WAIT for Copilot to generate the insights."
+
+================================================================================
+
+
+
